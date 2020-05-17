@@ -8,7 +8,7 @@ locals {
 
 terraform {
   # source = "../../../../../terraform-modules/aws-blueprints/ec2"
-  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/ec2"
+  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/ec2?ref=ec2-0.1.0"
 }
 
 include {
