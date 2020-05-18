@@ -11,7 +11,7 @@ locals {
 
 terraform {
   # source = "../../../../../terraform-modules/aws-blueprints/kops-iam"
-  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/kops-iam?ref=kops-iam-0.1.0"
+  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/kops-iam?ref=kops-iam-0.1.1"
 }
 
 include {
@@ -24,5 +24,6 @@ inputs = {
 
   aws_account_id = "${local.account_vars.locals.aws_account_id}"
   group_name  = "kops"
+  user_name = "kops"
   path_name = "/kops/"
 }
