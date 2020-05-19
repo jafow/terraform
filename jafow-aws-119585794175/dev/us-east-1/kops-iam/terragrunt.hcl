@@ -10,8 +10,8 @@ locals {
 }
 
 terraform {
-  # source = "../../../../../terraform-modules/aws-blueprints/kops-iam"
-  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/kops-iam?ref=kops-iam-0.1.1"
+  source = "../../../../../terraform-modules/aws-blueprints/kops-iam"
+  # source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/kops-iam?ref=kops-iam-0.1.1"
 }
 
 include {

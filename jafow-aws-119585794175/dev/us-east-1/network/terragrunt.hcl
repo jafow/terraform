@@ -12,7 +12,7 @@ locals {
 
 terraform {
   # source = "../../../../../terraform-modules/aws-blueprints/network"
-  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/network?ref=network-0.1.0"
+  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/network?ref=network-0.1.1"
 }
 
 include {
