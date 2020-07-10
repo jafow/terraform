@@ -1,14 +1,9 @@
-# stage/terragrunt.hcl
-
 locals {
   # Automatically load account-level variables
   account_vars = read_terragrunt_config(find_in_parent_folders("account.hcl"))
 
   # Automatically load region-level variables
   region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
-
-  # Automatically load environment-level variables
-  environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
 
   # Extract the variables we need for easy access
   account_name = local.account_vars.locals.account_name
@@ -41,7 +36,7 @@ provider "aws" {
   assume_role {
     role_arn = "arn:aws:iam::119585794175:role/AssumedRole"
   }
-  region = "us-east-1"
+  region = "${local.aws_region}"
 }
 EOF
 }
