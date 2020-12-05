@@ -3,16 +3,13 @@ locals {
   environment_vars = read_terragrunt_config(find_in_parent_folders("env.hcl"))
   region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl")) 
 
-  # tags = {terraform_managed = "true", stage = local.stage, namespace = local.environment_vars.locals.namespace}
-
   # Extract out common variables for reuse
   stage = local.environment_vars.locals.stage
   tags = merge({Name = "network"}, local.environment_vars.locals.common_tags)
 }
 
 terraform {
-  # source = "../../../../../terraform-modules/aws-blueprints/network"
-  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/network?ref=network-0.1.1"
+  source = "git@github.com:jafow/terraform-modules.git//aws-blueprints/network?ref=network-0.1.2"
 }
 
 include {
