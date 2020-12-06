@@ -1,0 +1,36 @@
+[
+  {
+    "name": "${container_name}",
+    "image": "rancher/hello-world:latest",
+    "cpu": ${container_cpu},
+    "memory": ${container_memory},
+    "portMappings": [
+      { "containerPort": ${container_port}, "hostPort": ${container_port} }
+    ],
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group" : "/${project_name}/${task_name}",
+        "awslogs-region": "${region}",
+        "awslogs-stream-prefix": "${stage}",
+        "awslogs-create-group": "true"
+      }
+    },
+    "healthCheck": {
+      "command": [
+        "CMD-SHELL",
+        "curl --fail http://localhost:${container_port} || exit 1"
+      ],
+      "interval": 20,
+      "timeout": 30,
+      "retries": 3
+    },
+    "environment": [
+      { "name": "NODE_ENV", "value": "production" },
+      { "name": "FOO", "value": "${foo}" },
+      { "name": "IS_IT_COOL", "value": "${cool}" }
+    ]
+  }
+]
+
